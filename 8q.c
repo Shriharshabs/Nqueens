@@ -4,7 +4,7 @@ int main()
 {
     printf("Printing 8 queens\n\n");
     int x=1,m=0,a[8][8],y=0,t=0,i,j,count=0;
-
+    int solnCount =0;
     //initialising the chess board
     for(i=0;i<8;i++)
     {
@@ -16,7 +16,7 @@ int main()
 
     a[0][0]=1;
    // printarr(a);
-    while(x<8)//x is the row
+    while(1)//x is the row
     {
         y=m;
         while(y<8)
@@ -50,9 +50,19 @@ int main()
         }
         else
             m=0;
+        if(x==8){
+            solnCount++;
+            printf("nQueen solution %d : \n\n",solnCount);
+            printarr(a);
+            printf("\n");
+
+            if(solnCount==10){
+                break;
+            }
+        }
 
     }
-    printarr(a);
+
     return 0;
 }
 int compare(int a[8][8],int b,int c)
