@@ -2,14 +2,10 @@
 
 int main()
 {
+    printf("Printing 8 queens\n\n");
     int x=1,m=0,a[8][8],y=0,t=0,i,j,count=0;
-    //a[0][0]=1;
-    //a[1][3]=1;
-    //t=compare(a,2,0);
-    //printf("%d",t);
-    //exit(0);
 
-
+    //initialising the chess board
     for(i=0;i<8;i++)
     {
         for(j=0;j<8;j++)
@@ -17,9 +13,10 @@ int main()
             a[i][j]=0;
         }
     }
+
     a[0][0]=1;
    // printarr(a);
-    while(x<8)
+    while(x<8)//x is the row
     {
         y=m;
         while(y<8)
@@ -33,13 +30,6 @@ int main()
               // printf("x=%d\ty=%d\n",x,y);
                //printf("%d\n",y);
                 x++;
-                //count++;
-               // printf("%d ",count);
-                if(count==250)
-                {
-
-                    exit(0);
-                }
                 break;
             }
             y++;
@@ -57,8 +47,6 @@ int main()
                     break;
                 }
             }
-
-
         }
         else
             m=0;
