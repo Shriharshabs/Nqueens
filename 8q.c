@@ -1,14 +1,17 @@
 #include<stdio.h>
 
+#define MAX 50
+int n = 8;
 int main()
 {
-    printf("Printing 8 queens\n\n");
-    int x=1,m=0,a[8][8],y=0,t=0,i,j,count=0;
+
+    printf("Printing %d queens\n\n",n);
+    int x=1,m=0,a[MAX][MAX],y=0,t=0,i,j,count=0;
     int solnCount =0;
     //initialising the chess board
-    for(i=0;i<8;i++)
+    for(i=0;i<n;i++)
     {
-        for(j=0;j<8;j++)
+        for(j=0;j<n;j++)
         {
             a[i][j]=0;
         }
@@ -19,26 +22,24 @@ int main()
     while(1)//x is the row
     {
         y=m;
-        while(y<8)
+        while(y<n)
         {
 
             if(compare(a,x,y))
             {
                 a[x][y]=1;
-              //  printf("%d,%d\n",x,y);
-                //printarr(a);
-              // printf("x=%d\ty=%d\n",x,y);
-               //printf("%d\n",y);
                 x++;
                 break;
             }
             y++;
 
         }
-        if(y==8)
+        if(y==n)
         {
             x=x-1;
-            for(i=0;i<8;i++)
+            if(x==-1)
+                exit(0);
+            for(i=0;i<n;i++)
             {
                 if(a[x][i]==1)
                 {
@@ -50,13 +51,13 @@ int main()
         }
         else
             m=0;
-        if(x==8){
+        if(x==n){
             solnCount++;
-            printf("nQueen solution %d : \n\n",solnCount);
+            printf("%d Queen solution %d : \n\n",n,solnCount);
             printarr(a);
             printf("\n");
 
-            if(solnCount==10){
+            if(solnCount==10000){
                 break;
             }
         }
@@ -65,14 +66,15 @@ int main()
 
     return 0;
 }
-int compare(int a[8][8],int b,int c)
+
+int compare(int a[MAX][MAX],int b,int c)
 {
     int x,y,c1=0,c2=0;
     //printarr(a);
     //printf("\n");
-    for(x=0;x<8;x++)
+    for(x=0;x<n;x++)
     {
-        for(y=0;y<8;y++)
+        for(y=0;y<n;y++)
         {
             if(a[x][y]==1)
             {
@@ -121,12 +123,12 @@ int mod(int x)
     else
         return -x;
 }
-int printarr(int a[8][8])
+int printarr(int a[MAX][MAX])
 {
     int i,j;
-    for(i=0;i<8;i++)
+    for(i=0;i<n;i++)
     {
-        for(j=0;j<8;j++)
+        for(j=0;j<n;j++)
         {
             printf("%c",a[i][j]==1?'X':'.');
         }
